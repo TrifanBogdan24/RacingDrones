@@ -16,6 +16,9 @@
 #   include "lab_extra/lab_list.h"
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 #ifdef _WIN32
 PREFER_DISCRETE_GPU_NVIDIA;
@@ -32,6 +35,14 @@ std::string GetParentDir(const std::string& filePath)
 
 int main(int argc, char** argv)
 {
+    // [SUGGETSION] Comment below lines in order to make DEBUG console appear
+#ifdef _WIN32
+    // Hide DEBUG console, if it exists
+    HWND hWnd = GetConsoleWindow();
+    if (hWnd)
+        ShowWindow(hWnd, SW_HIDE);
+#endif
+
     srand((unsigned int)time(NULL));
 
     // Create a window property structure
