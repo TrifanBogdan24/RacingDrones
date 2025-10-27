@@ -117,10 +117,6 @@ void Game::Init()
 
 
 
-
-
-
-
     // Initialize tx, ty and tz (the translation steps)
     translateX = 0;
     translateY = 0;
@@ -158,6 +154,9 @@ void Game::Init()
     // void Set(const glm::vec3 & position, const glm::vec3 & center, const glm::vec3 & up)
     camera->Set(glm::vec3(0, 2.f, 3.5f), glm::vec3(0, 2, 0), glm::vec3(0, 2, 0));
 
+
+    this->demoPlayer.miniMapCameraType = MiniMapCameraType::PERSPECTIVE;
+    this->demoPlayer.mainScreenCameraType = MainScreenCameraType::THIRD_PERSON;
 }
 
 
@@ -203,10 +202,6 @@ void Game::InitDrones()
         ViewportArea(resolution.x / 2.f + 0.5f, 0, resolution.x / 2.f, resolution.y),
         ViewportArea(resolution.x / 2.f + 0.5f, 0, resolution.x / 2.f, resolution.y)
     );
-
-
-
-
 }
 
 void Game::InitDroneMeshes(Drone& drone, string name)
@@ -953,11 +948,6 @@ void Game::OnInputUpdate(float deltaTime, int mods)
         Player& player = (isDemo) ? demoPlayer : player1;
         player.drone.AnulateAltitudeAscendSpeed();
         player.drone.AnulateAltitudeDescendSpeed();
-    }
-
-    if (window->KeyHold(GLFW_KEY_RIGHT_CONTROL) && window->KeyHold(GLFW_KEY_Q)) {
-        this->demoPlayer.miniMapCameraType = MiniMapCameraType::ORTHOGONAL;
-        return;
     }
 
 

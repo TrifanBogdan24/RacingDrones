@@ -35,7 +35,7 @@ std::string GetParentDir(const std::string& filePath)
 
 int main(int argc, char** argv)
 {
-    // [SUGGETSION] Comment below lines in order to make DEBUG console appear
+     //[SUGGETSION] Comment below lines in order to make DEBUG console appear
 #ifdef _WIN32
     // Hide DEBUG console, if it exists
     HWND hWnd = GetConsoleWindow();
